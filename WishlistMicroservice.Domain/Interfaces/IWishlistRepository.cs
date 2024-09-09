@@ -7,12 +7,12 @@ namespace WishlistMicroservice.Domain.Interfaces
 {
     public interface IWishlistRepository
     {
-        Task<Wishlist> GetByIdAsync(Guid id);
-        Task<Wishlist> GetByUserIdAsync(Guid userId);
-        Task<IEnumerable<WishlistItem>> GetWishlistItemsAsync(Guid wishlistId);
+        Task<Wishlist> GetByIdAsync(int id);
+        Task<Wishlist> GetByUserIdAsync(string userId);
+        Task<IEnumerable<WishlistItem>> GetWishlistItemsAsync(int wishlistId);
         Task<WishlistItem> AddItemAsync(WishlistItem item);
-        Task<bool> RemoveItemAsync(Guid wishlistId, Guid bookId);
-        Task<int> GetItemCountAsync(Guid wishlistId);
-        Task<IEnumerable<WishlistItem>> SearchItemsAsync(Guid wishlistId, string searchTerm, int page, int pageSize);
+        Task<bool> RemoveItemAsync(int wishlistId, int bookId);
+        Task<int> GetItemCountAsync(int wishlistId);
+        Task<IEnumerable<WishlistItem>> SearchItemsAsync(int wishlistId, string searchTerm, int page, int pageSize);
     }
 }

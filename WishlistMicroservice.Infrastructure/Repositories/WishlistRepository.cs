@@ -18,21 +18,21 @@ namespace WishlistMicroservice.Infrastructure.Repositories
             _context = context;
         }
 
-        public async Task<Wishlist> GetByIdAsync(Guid id)
+        public async Task<Wishlist> GetByIdAsync(int id)
         {
             return await _context.Wishlists
                 .Include(w => w.Items)
                 .FirstOrDefaultAsync(w => w.Id == id);
         }
 
-        public async Task<Wishlist> GetByUserIdAsync(Guid userId)
+        public async Task<Wishlist> GetByUserIdAsync(string userId)
         {
             return await _context.Wishlists
                 .Include(w => w.Items)
                 .FirstOrDefaultAsync(w => w.UserId == userId);
         }
 
-        public async Task<IEnumerable<WishlistItem>> GetWishlistItemsAsync(Guid wishlistId)
+        public async Task<IEnumerable<WishlistItem>> GetWishlistItemsAsync(int wishlistId)
         {
             return await _context.WishlistItems
                 .Where(wi => wi.WishlistId == wishlistId)
@@ -46,7 +46,7 @@ namespace WishlistMicroservice.Infrastructure.Repositories
             return item;
         }
 
-        public async Task<bool> RemoveItemAsync(Guid wishlistId, Guid bookId)
+        public async Task<bool> RemoveItemAsync(int wishlistId, int bookId)
         {
             var item = await _context.WishlistItems
                 .FirstOrDefaultAsync(wi => wi.WishlistId == wishlistId && wi.BookId == bookId);
@@ -59,13 +59,13 @@ namespace WishlistMicroservice.Infrastructure.Repositories
             return true;
         }
 
-        public async Task<int> GetItemCountAsync(Guid wishlistId)
+        public async Task<int> GetItemCountAsync(int wishlistId)
         {
             return await _context.WishlistItems
                 .CountAsync(wi => wi.WishlistId == wishlistId);
         }
 
-        public async Task<IEnumerable<WishlistItem>> SearchItemsAsync(Guid wishlistId, string searchTerm, int page, int pageSize)
+        public async Task<IEnumerable<WishlistItem>> SearchItemsAsync(int wishlistId, string searchTerm, int page, int pageSize)
         {
             return await _context.WishlistItems
                 .Where(wi => wi.WishlistId == wishlistId && wi.BookId.ToString().Contains(searchTerm))

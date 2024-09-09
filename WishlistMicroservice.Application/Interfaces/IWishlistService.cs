@@ -9,10 +9,10 @@ namespace WishlistMicroservice.Application.Interfaces
 {
     public interface IWishlistService
     {
-        Task<WishlistDto> GetWishlistAsync(Guid userId);
-        Task<WishlistItemDto> AddItemToWishlistAsync(Guid userId, AddWishlistItemDto itemDto);
-        Task<bool> RemoveItemFromWishlistAsync(Guid userId, Guid bookId);
-        Task<int> GetWishlistItemCountAsync(Guid userId);
-        Task<WishlistSearchResultDto> SearchWishlistAsync(Guid userId, string searchTerm, int page, int pageSize);
+        Task<WishlistDto> GetWishlistAsync(string userId);
+        Task<WishlistItemDto> AddItemToWishlistAsync(string userId, AddWishlistItemDto itemDto);
+        Task<bool> RemoveItemFromWishlistAsync(string userId, int bookId);
+        Task<int> GetWishlistItemCountAsync(string userId);
+        Task<WishlistSearchResultDto> SearchWishlistAsync(string userId, string searchTerm, int page, int pageSize);
     }
 }

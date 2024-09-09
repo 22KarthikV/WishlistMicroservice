@@ -24,9 +24,11 @@ namespace WishlistMicroservice.Infrastructure.Migrations
 
             modelBuilder.Entity("WishlistMicroservice.Domain.Entities.Wishlist", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
@@ -34,8 +36,9 @@ namespace WishlistMicroservice.Infrastructure.Migrations
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -44,18 +47,20 @@ namespace WishlistMicroservice.Infrastructure.Migrations
 
             modelBuilder.Entity("WishlistMicroservice.Domain.Entities.WishlistItem", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("AddedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid>("BookId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int>("BookId")
+                        .HasColumnType("int");
 
-                    b.Property<Guid>("WishlistId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int>("WishlistId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 

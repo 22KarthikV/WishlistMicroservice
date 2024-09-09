@@ -8,9 +8,9 @@ namespace WishlistMicroservice.Domain.Entities
 {
     public class WishlistItem
     {
-        public Guid Id { get; set; }
-        public Guid WishlistId { get; set; }
-        public Guid BookId { get; set; }
+        public int Id { get; set; }
+        public int WishlistId { get; set; }
+        public int BookId { get; set; }
         public DateTime AddedAt { get; set; }
     }
 }

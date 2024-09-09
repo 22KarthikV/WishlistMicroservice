@@ -8,7 +8,7 @@ namespace WishlistMicroservice.Infrastructure.Services
 {
     public interface IBookServiceClient
     {
-        Task<BookInfo> GetBookInfoAsync(Guid bookId);
+        Task<BookInfo> GetBookInfoAsync(int bookId);
     }
 
     public class BookServiceClient : IBookServiceClient
@@ -22,7 +22,7 @@ namespace WishlistMicroservice.Infrastructure.Services
             _bookServiceBaseUrl = configuration["BookService:BaseUrl"];
         }
 
-        public async Task<BookInfo> GetBookInfoAsync(Guid bookId)
+        public async Task<BookInfo> GetBookInfoAsync(int bookId)
         {
             var response = await _httpClient.GetAsync($"{_bookServiceBaseUrl}/api/books/{bookId}");
 

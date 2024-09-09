@@ -8,8 +8,8 @@ namespace WishlistMicroservice.Application.DTOs
 {
     public class WishlistItemDto
     {
-        public Guid Id { get; set; }
-        public Guid BookId { get; set; }
+        public int Id { get; set; }
+        public int BookId { get; set; }
         public DateTime AddedAt { get; set; }
     }
 }
